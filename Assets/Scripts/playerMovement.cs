@@ -12,6 +12,7 @@ public class playerMovement : MonoBehaviour {
 	public bool hasBox = false;
 	public string boxType = "none";
 	public float speed = 5f;
+	public float cameraX;
 
 	// Use this for initialization
 	void Start () {
@@ -28,9 +29,16 @@ public class playerMovement : MonoBehaviour {
 		//General Movement
 		float horizontal = Input.GetAxis("Horizontal");
 		float vertical = Input.GetAxis("Vertical");
-		Vector3 movement = transform.forward * speed * vertical;
-		myCharController.Move((movement + Physics.gravity) * Time.deltaTime);
-		transform.Rotate(0f, horizontal * 90f * Time.deltaTime, 0f);
+		Vector3 fMovement = transform.forward * speed * vertical;
+		myCharController.Move((fMovement + Physics.gravity) * Time.deltaTime);
+		Vector3 rMovement = transform.right * speed * horizontal;
+		myCharController.Move((rMovement + Physics.gravity) * Time.deltaTime);
+
+		//transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, cameraX, 0f);
+		//transform.rotation.y = cameraX;
+
+		//transform.Rotate(0f, horizontal * 90f * Time.deltaTime, 0f);
+	
 
 		if(hasBox){
 
@@ -47,4 +55,14 @@ public class playerMovement : MonoBehaviour {
 
 		holdingHelper.text = textBuffer;
 	}
+
+	/*
+	 * Whats next:
+	 * Movement and camera are working
+	 * 
+	 * Now just work on pick up boxes and placing them
+	 * You are making sure that you set the box active and deactivate if picked up
+	 * Next is to model and move around
+	 * Make it at time attack
+	 * */
 }
