@@ -46,7 +46,7 @@ public class gameLogic : MonoBehaviour {
 
 
 		}
-			
+		//Consider not doing a buffer maybe
 		hintHelp.text = textBuffer;
 		
 	}
