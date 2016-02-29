@@ -10,7 +10,7 @@ public class gameLogic : MonoBehaviour {
 
 	public Text hintHelp;
 	public Transform player;
-	public GameObject fastBox;
+	public GameObject jumpBox;
 	public GameObject fastBox2;
 	public Transform heavyBox;
 	bool hasBox = false;
@@ -28,9 +28,10 @@ public class gameLogic : MonoBehaviour {
 
 		string textBuffer = " ";
 
-		if(((player.position - fastBox.transform.position).magnitude < 3f ||
-			(player.position - fastBox2.transform.position).magnitude < 3f) &&
-			fastBox2.active){
+		if(((player.position - fastBox2.transform.position).magnitude < 3f) &&
+			fastBox2.activeSelf){
+
+			if(!hasBox){
 
 			textBuffer = "Press [SPACE] to pick up a light box";
 
@@ -43,9 +44,39 @@ public class gameLogic : MonoBehaviour {
 				//Dont destroy it, instead just hide it, then make it active and teleport it when you place it
 				fastBox2.SetActive(false);
 			}
+			}
 
+			if(hasBox){
+				textBuffer = "You cannot hold more than 1 box";
+			}
 
 		}
+
+
+		if(((player.position - jumpBox.transform.position).magnitude < 3f) &&
+			jumpBox.activeSelf){
+
+			if(!hasBox){
+
+				textBuffer = "Press [SPACE] to pick up an energetic box";
+
+				if(Input.GetKeyDown(KeyCode.Space)){
+					hasBox = true;
+					boxType = 2;
+					player.GetComponent<playerMovement>().hasBox = true;
+					player.GetComponent<playerMovement>().boxType = "jump";
+
+					//Dont destroy it, instead just hide it, then make it active and teleport it when you place it
+					jumpBox.SetActive(false);
+				}
+			}
+
+			if(hasBox){
+				textBuffer = "You cannot hold more than 1 box";
+			}
+
+		}
+
 		//Consider not doing a buffer maybe
 		hintHelp.text = textBuffer;
 		
