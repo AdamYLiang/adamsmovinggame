@@ -13,6 +13,10 @@ public class gameLogic : MonoBehaviour {
 	public GameObject jumpBox;
 	public GameObject fastBox2;
 	public GameObject heavyBox;
+	public GameObject winZone;
+	int amountOfBoxes = 0;//Make it in the game when you hit 3 
+	float displayTimer = 3f;
+	float jumpTimer = 3f;
 	bool hasBox = false;
 	int boxType = 0;
 
@@ -32,7 +36,7 @@ public class gameLogic : MonoBehaviour {
 		if(((player.position - fastBox2.transform.position).magnitude < 3f) &&
 			fastBox2.activeSelf){
 
-			if(!hasBox){
+			if(!hasBox && ((player.position - winZone.transform.position).magnitude > 3f)){
 
 			textBuffer = "Press [E] to pick up a light box";
 
@@ -57,7 +61,7 @@ public class gameLogic : MonoBehaviour {
 		if(((player.position - jumpBox.transform.position).magnitude < 3f) &&
 			jumpBox.activeSelf){
 
-			if(!hasBox){
+			if(!hasBox && ((player.position - winZone.transform.position).magnitude > 3f)){
 
 				textBuffer = "Press [E] to pick up an energetic box";
 
@@ -69,20 +73,29 @@ public class gameLogic : MonoBehaviour {
 
 					//Dont destroy it, instead just hide it, then make it active and teleport it when you place it
 					jumpBox.SetActive(false);
+
 				}
 			}
 
-			if(hasBox){
-				textBuffer = "You cannot hold more than 1 box \n Drop held box with [Q]";
+			if(hasBox && !(boxType == 2)){
+				textBuffer += "You cannot hold more than 1 box \n Drop held box with [Q]";
 			}
 
 		}
+
+		//Make thsi show up tytyt
+		if(boxType == 2 && jumpTimer > 0){
+			Debug.Log("Nice meme");
+			textBuffer = "Press [SPACE] to jump while holding jump box";
+		}
+
+		jumpTimer -= Time.deltaTime;
 
 		//Heavy box
 		if(((player.position - heavyBox.transform.position).magnitude < 3f) &&
 			heavyBox.activeSelf){
 
-			if(!hasBox){
+			if(!hasBox && ((player.position - winZone.transform.position).magnitude > 3f)){
 
 				textBuffer = "Press [E] to pick up a heavy box";
 
@@ -103,6 +116,39 @@ public class gameLogic : MonoBehaviour {
 
 		}
 
+		//Winning code
+		if(((fastBox2.transform.position - winZone.transform.position).magnitude < 5f) &&
+			fastBox2.activeSelf){
+
+			if(displayTimer > 0){
+				textBuffer = "Placed Fast Box in correct place";
+			};
+
+			displayTimer -= Time.deltaTime;
+
+		}
+
+		if(((jumpBox.transform.position - winZone.transform.position).magnitude < 5f) &&
+			jumpBox.activeSelf){
+		
+			if(displayTimer > 0){
+				textBuffer = "Placed Energetic Box in correct place";
+			};
+
+			displayTimer -= Time.deltaTime;
+
+		}
+
+		if(((heavyBox.transform.position - winZone.transform.position).magnitude < 5f) &&
+			heavyBox.activeSelf){
+
+			if(displayTimer > 0){
+				textBuffer = "Placed Heavy Box in correct place";
+			};
+
+			displayTimer -= Time.deltaTime;
+
+		}
 
 		//Dropping a box
 		if(hasBox && Input.GetKeyDown(KeyCode.Q)){
