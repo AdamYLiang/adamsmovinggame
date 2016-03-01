@@ -12,7 +12,7 @@ public class gameLogic : MonoBehaviour {
 	public Transform player;
 	public GameObject jumpBox;
 	public GameObject fastBox2;
-	public Transform heavyBox;
+	public GameObject heavyBox;
 	bool hasBox = false;
 	int boxType = 0;
 
@@ -34,9 +34,9 @@ public class gameLogic : MonoBehaviour {
 
 			if(!hasBox){
 
-			textBuffer = "Press [SPACE] to pick up a light box";
+			textBuffer = "Press [E] to pick up a light box";
 
-			if(Input.GetKeyDown(KeyCode.Space)){
+			if(Input.GetKeyDown(KeyCode.E)){
 				hasBox = true;
 				boxType = 1;
 				player.GetComponent<playerMovement>().hasBox = true;
@@ -48,7 +48,7 @@ public class gameLogic : MonoBehaviour {
 			}
 
 			if(hasBox){
-				textBuffer = "You cannot hold more than 1 box \n Drop held box with [Z]";
+				textBuffer = "You cannot hold more than 1 box \n Drop held box with [Q]";
 			}
 
 		}
@@ -59,9 +59,9 @@ public class gameLogic : MonoBehaviour {
 
 			if(!hasBox){
 
-				textBuffer = "Press [SPACE] to pick up an energetic box";
+				textBuffer = "Press [E] to pick up an energetic box";
 
-				if(Input.GetKeyDown(KeyCode.Space)){
+				if(Input.GetKeyDown(KeyCode.E)){
 					hasBox = true;
 					boxType = 2;
 					player.GetComponent<playerMovement>().hasBox = true;
@@ -73,14 +73,39 @@ public class gameLogic : MonoBehaviour {
 			}
 
 			if(hasBox){
-				textBuffer = "You cannot hold more than 1 box";
+				textBuffer = "You cannot hold more than 1 box \n Drop held box with [Q]";
+			}
+
+		}
+
+		//Heavy box
+		if(((player.position - heavyBox.transform.position).magnitude < 3f) &&
+			heavyBox.activeSelf){
+
+			if(!hasBox){
+
+				textBuffer = "Press [E] to pick up a heavy box";
+
+				if(Input.GetKeyDown(KeyCode.E)){
+					hasBox = true;
+					boxType = 3;
+					player.GetComponent<playerMovement>().hasBox = true;
+					player.GetComponent<playerMovement>().boxType = "heavy";
+
+					//Dont destroy it, instead just hide it, then make it active and teleport it when you place it
+					heavyBox.SetActive(false);
+				}
+			}
+
+			if(hasBox){
+				textBuffer = "You cannot hold more than 1 box \n Drop held box with [Q]";
 			}
 
 		}
 
 
 		//Dropping a box
-		if(hasBox && Input.GetKeyDown(KeyCode.Z)){
+		if(hasBox && Input.GetKeyDown(KeyCode.Q)){
 			if(boxType == 1){
 				hasBox = false;
 				boxType = 0;
@@ -103,6 +128,18 @@ public class gameLogic : MonoBehaviour {
 				jumpBox.transform.position = (player.transform.position + (player.transform.forward * 2f));
 
 				jumpBox.SetActive(true);
+			}
+
+			if(boxType == 3){
+				hasBox = false;
+				boxType = 0;
+				player.GetComponent<playerMovement>().hasBox = false;
+				player.GetComponent<playerMovement>().boxType = "none";
+
+				//Fix the rotation, it doesnt place it directly on where the camera is
+				heavyBox.transform.position = (player.transform.position + (player.transform.forward * 2f));
+
+				heavyBox.SetActive(true);
 			}
 		}
 

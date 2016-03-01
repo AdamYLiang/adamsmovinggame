@@ -52,7 +52,7 @@ public class playerMovement : MonoBehaviour {
 
 			if(boxType == "jump"){
 				textBuffer += "Jump Box";
-				if(Input.GetKeyDown(KeyCode.F)){
+				if(Input.GetKeyDown(KeyCode.Space)){
 					if(myCharController.isGrounded){
 						//Still working on jump
 						//This one is the on documentation 
@@ -64,7 +64,12 @@ public class playerMovement : MonoBehaviour {
 				moveDirection.y -= custGravity * Time.deltaTime;
 				myCharController.Move((moveDirection) * Time.deltaTime);
 			}
-			
+
+			if(boxType == "heavy"){
+				textBuffer += "Heavy Box";
+				speed = 2f;
+				}
+
 		}
 
 		else{
