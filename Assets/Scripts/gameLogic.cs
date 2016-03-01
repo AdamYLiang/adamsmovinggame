@@ -16,6 +16,8 @@ public class gameLogic : MonoBehaviour {
 	public GameObject winZone;
 	int amountOfBoxes = 0;//Make it in the game when you hit 3 
 	float displayTimer = 3f;
+	float hDisplayTimer = 3f;
+	float jDisplayTimer = 3f;
 	float jumpTimer = 3f;
 	bool hasBox = false;
 	int boxType = 0;
@@ -86,7 +88,6 @@ public class gameLogic : MonoBehaviour {
 		//Make thsi show up tytyt
 		if(boxType == 2){
 			if(jumpTimer > 0){
-			Debug.Log("Nice meme");
 			textBuffer = "Press [SPACE] to jump while holding jump box";
 			}
 			jumpTimer -= Time.deltaTime;
@@ -133,22 +134,22 @@ public class gameLogic : MonoBehaviour {
 		if(((jumpBox.transform.position - winZone.transform.position).magnitude < 5f) &&
 			jumpBox.activeSelf){
 		
-			if(displayTimer > 0){
+			if(jDisplayTimer > 0){
 				textBuffer = "Placed Energetic Box in correct place";
 			};
 
-			displayTimer -= Time.deltaTime;
+			jDisplayTimer -= Time.deltaTime;
 
 		}
 
 		if(((heavyBox.transform.position - winZone.transform.position).magnitude < 5f) &&
 			heavyBox.activeSelf){
 
-			if(displayTimer > 0){
+			if(hDisplayTimer > 0){
 				textBuffer = "Placed Heavy Box in correct place";
 			};
 
-			displayTimer -= Time.deltaTime;
+			hDisplayTimer -= Time.deltaTime;
 
 		}
 
