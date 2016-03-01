@@ -14,6 +14,7 @@ public class gameLogic : MonoBehaviour {
 	public GameObject fastBox2;
 	public GameObject heavyBox;
 	public GameObject winZone;
+	//public GameObject elevator;
 	int amountOfBoxes = 0;//Make it in the game when you hit 3 
 	float displayTimer = 3f;
 	float hDisplayTimer = 3f;
@@ -191,6 +192,11 @@ public class gameLogic : MonoBehaviour {
 				heavyBox.SetActive(true);
 			}
 		}
+
+		//Elevator movement with heavy box
+		//Add some fences from maya
+		//Add a shortcut for going back 
+
 
 		//Consider not doing a buffer maybe
 		hintHelp.text = textBuffer;
