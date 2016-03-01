@@ -28,6 +28,7 @@ public class gameLogic : MonoBehaviour {
 
 		string textBuffer = " ";
 
+		//Fast moving box
 		if(((player.position - fastBox2.transform.position).magnitude < 3f) &&
 			fastBox2.activeSelf){
 
@@ -47,12 +48,12 @@ public class gameLogic : MonoBehaviour {
 			}
 
 			if(hasBox){
-				textBuffer = "You cannot hold more than 1 box";
+				textBuffer = "You cannot hold more than 1 box \n Drop held box with [Z]";
 			}
 
 		}
 
-
+		//Jumping box
 		if(((player.position - jumpBox.transform.position).magnitude < 3f) &&
 			jumpBox.activeSelf){
 
@@ -75,6 +76,34 @@ public class gameLogic : MonoBehaviour {
 				textBuffer = "You cannot hold more than 1 box";
 			}
 
+		}
+
+
+		//Dropping a box
+		if(hasBox && Input.GetKeyDown(KeyCode.Z)){
+			if(boxType == 1){
+				hasBox = false;
+				boxType = 0;
+				player.GetComponent<playerMovement>().hasBox = false;
+				player.GetComponent<playerMovement>().boxType = "none";
+
+				//Fix the rotation, it doesnt place it directly on where the camera is
+				fastBox2.transform.position = (player.transform.position + (player.transform.forward * 2f));
+
+				fastBox2.SetActive(true);
+			}
+
+			if(boxType == 2){
+				hasBox = false;
+				boxType = 0;
+				player.GetComponent<playerMovement>().hasBox = false;
+				player.GetComponent<playerMovement>().boxType = "none";
+
+				//Fix the rotation, it doesnt place it directly on where the camera is
+				jumpBox.transform.position = (player.transform.position + (player.transform.forward * 2f));
+
+				jumpBox.SetActive(true);
+			}
 		}
 
 		//Consider not doing a buffer maybe

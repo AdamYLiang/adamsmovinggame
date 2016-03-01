@@ -13,7 +13,7 @@ public class playerMovement : MonoBehaviour {
 	public string boxType = "none";
 	public float speed = 5f;
 	public float cameraX;
-	public float jumpSpeed = 8f;
+	public float jumpSpeed = 30f;
 	public float custGravity = 20f;
 	private Vector3 moveDirection = Vector3.zero;
 
@@ -52,27 +52,23 @@ public class playerMovement : MonoBehaviour {
 
 			if(boxType == "jump"){
 				textBuffer += "Jump Box";
-				if(Input.GetKey(KeyCode.F)){
+				if(Input.GetKeyDown(KeyCode.F)){
 					if(myCharController.isGrounded){
 						//Still working on jump
 						//This one is the on documentation 
-						moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-						moveDirection = transform.TransformDirection(moveDirection);
-						moveDirection *= speed;
 						moveDirection.y = jumpSpeed;
-
 						//Below is the other one 
 						//myCharController.Move(new Vector3(0,10,0);
 					}
-
-					moveDirection.y -= custGravity * Time.deltaTime;
-					myCharController.Move(moveDirection * Time.deltaTime);
 				}
+				moveDirection.y -= custGravity * Time.deltaTime;
+				myCharController.Move((moveDirection) * Time.deltaTime);
 			}
 			
 		}
 
 		else{
+			speed = 5f;
 			textBuffer += "Nothing";
 		}
 
