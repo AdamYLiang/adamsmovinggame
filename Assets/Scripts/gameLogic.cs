@@ -84,12 +84,14 @@ public class gameLogic : MonoBehaviour {
 		}
 
 		//Make thsi show up tytyt
-		if(boxType == 2 && jumpTimer > 0){
+		if(boxType == 2){
+			if(jumpTimer > 0){
 			Debug.Log("Nice meme");
 			textBuffer = "Press [SPACE] to jump while holding jump box";
+			}
+			jumpTimer -= Time.deltaTime;
 		}
-
-		jumpTimer -= Time.deltaTime;
+			
 
 		//Heavy box
 		if(((player.position - heavyBox.transform.position).magnitude < 3f) &&
