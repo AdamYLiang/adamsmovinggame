@@ -18,7 +18,11 @@ public class warpTruck : MonoBehaviour {
 		//Time.time is number of seconds elapsed in game;
 
 		if(Input.GetKeyDown(KeyCode.G)){
-			player.transform.position = ( new Vector3(-20,2,-35));
+			player.transform.position = ( new Vector3(-18,2,-14));
+			//Rotating view isnt working, figure it out 
+			//Use fast to go through a garden maze
+			//Use jump to jump into traffic and run 
+			player.transform.localEulerAngles = new Vector3(0,200,0);
 		}
 		
 
