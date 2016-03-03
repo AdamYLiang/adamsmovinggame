@@ -16,6 +16,9 @@ public class titleScreen : MonoBehaviour {
 			//Dont use application.loadlevel, its getting phased out, new thing
 			//If crossed out it means its slowly starting to dip
 			//Add UnityEngine.SceneManagement
+			//Reloads scene
+			//SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
 			SceneManager.LoadScene(1);
 		}
 	}
