@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class gameLogic : MonoBehaviour {
 
@@ -15,13 +16,15 @@ public class gameLogic : MonoBehaviour {
 	public GameObject heavyBox;
 	public GameObject winZone;
 	//public GameObject elevator;
-	int amountOfBoxes = 0;//Make it in the game when you hit 3 
 	float displayTimer = 3f;
 	float hDisplayTimer = 3f;
 	float jDisplayTimer = 3f;
 	float jumpTimer = 3f;
 	bool hasBox = false;
 	int boxType = 0;
+	bool fastBoxPlaced = false;
+	bool jumpBoxPlaced = false;
+	public static bool winGame = false;
 
 	// Use this for initialization
 	void Start () {
@@ -128,6 +131,8 @@ public class gameLogic : MonoBehaviour {
 				textBuffer = "Placed Fast Box in correct place";
 			};
 
+			fastBoxPlaced = true;
+
 			displayTimer -= Time.deltaTime;
 
 		}
@@ -138,6 +143,8 @@ public class gameLogic : MonoBehaviour {
 			if(jDisplayTimer > 0){
 				textBuffer = "Placed Energetic Box in correct place";
 			};
+
+			jumpBoxPlaced = true;
 
 			jDisplayTimer -= Time.deltaTime;
 
@@ -200,6 +207,11 @@ public class gameLogic : MonoBehaviour {
 
 		//Consider not doing a buffer maybe
 		hintHelp.text = textBuffer;
+
+		if(jumpBoxPlaced && fastBoxPlaced){
+			winGame = true;
+			SceneManager.LoadScene(2);
+		}
 		
 	}
 }
