@@ -36,10 +36,10 @@ public class gameLogic : MonoBehaviour {
 		string textBuffer = " ";
 
 		//Fast moving box
-		if(((player.position - fastBox2.transform.position).magnitude < 3f) &&
+		if(((player.position - fastBox2.transform.position).magnitude < 2f) &&
 			fastBox2.activeSelf){
 
-			if(!hasBox && ((player.position - winZone.transform.position).magnitude > 3f)){
+			if(!hasBox && ((player.position - winZone.transform.position).magnitude > 2f)){
 
 			textBuffer = "Press [E] to pick up a light box";
 
@@ -61,10 +61,10 @@ public class gameLogic : MonoBehaviour {
 		}
 
 		//Jumping box
-		if(((player.position - jumpBox.transform.position).magnitude < 3f) &&
+		if(((player.position - jumpBox.transform.position).magnitude < 2f) &&
 			jumpBox.activeSelf){
 
-			if(!hasBox && ((player.position - winZone.transform.position).magnitude > 3f)){
+			if(!hasBox && ((player.position - winZone.transform.position).magnitude > 2f)){
 
 				textBuffer = "Press [E] to pick up an energetic box";
 
@@ -96,10 +96,10 @@ public class gameLogic : MonoBehaviour {
 			
 
 		//Heavy box
-		if(((player.position - heavyBox.transform.position).magnitude < 3f) &&
+		if(((player.position - heavyBox.transform.position).magnitude < 2f) &&
 			heavyBox.activeSelf){
 
-			if(!hasBox && ((player.position - winZone.transform.position).magnitude > 3f)){
+			if(!hasBox && ((player.position - winZone.transform.position).magnitude > 2f)){
 
 				textBuffer = "Press [E] to pick up a heavy box";
 

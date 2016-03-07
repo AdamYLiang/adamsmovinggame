@@ -13,7 +13,7 @@ public class playerMovement : MonoBehaviour {
 	public string boxType = "none";
 	public float speed = 5f;
 	public float cameraX;
-	public float jumpSpeed = 30f;
+	public float jumpSpeed = 27f;
 	public float custGravity = 20f;
 	private Vector3 moveDirection = Vector3.zero;
 
