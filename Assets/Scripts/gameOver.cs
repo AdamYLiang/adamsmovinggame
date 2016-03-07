@@ -11,7 +11,7 @@ public class gameOver : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Space)){
+		if(Input.GetKeyDown(KeyCode.R)){
 			//Loads main game scene if pressed
 			//Dont use application.loadlevel, its getting phased out, new thing
 			//If crossed out it means its slowly starting to dip
