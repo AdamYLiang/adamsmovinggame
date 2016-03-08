@@ -17,7 +17,7 @@ public class gameOver : MonoBehaviour {
 
 		if (gameLogic.winGame == true) {
 
-			gameText.text = "You won! \n Press [R] to play again!";
+			gameText.text = "You won! \n Press [R] to restart!";
 
 			if (Input.GetKeyDown (KeyCode.R)) {
 				//Loads main game scene if pressed
@@ -26,7 +26,7 @@ public class gameOver : MonoBehaviour {
 				//Add UnityEngine.SceneManagement
 				//Reloads scene
 				//SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+				gameLogic.winGame = false;
 				SceneManager.LoadScene (1);
 			}
 			

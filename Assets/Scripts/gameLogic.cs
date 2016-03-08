@@ -92,7 +92,7 @@ public class gameLogic : MonoBehaviour {
 		//Make thsi show up tytyt
 		if(boxType == 2){
 			if(jumpTimer > 0){
-			textBuffer = "Press [SPACE] to jump while holding jump box";
+			textBuffer = "Press [SPACE] to jump while holding energetic box";
 			}
 			jumpTimer -= Time.deltaTime;
 		}
@@ -104,7 +104,7 @@ public class gameLogic : MonoBehaviour {
 
 			if(!hasBox && ((player.position - winZone.transform.position).magnitude > 2f)){
 
-				textBuffer = "Press [E] to pick up a heavy box";
+				textBuffer = "Press [E] to pick up an easter egg box \n It does absolutely nothing.";
 
 				if(Input.GetKeyDown(KeyCode.E)){
 					hasBox = true;
@@ -128,7 +128,7 @@ public class gameLogic : MonoBehaviour {
 			fastBox2.activeSelf){
 
 			if(displayTimer > 0){
-				textBuffer = "Placed Fast Box in correct place";
+				textBuffer = "Placed Light Box in correct place";
 			};
 
 			fastBoxPlaced = true;
