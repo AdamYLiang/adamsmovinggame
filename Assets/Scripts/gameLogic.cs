@@ -9,6 +9,12 @@ public class gameLogic : MonoBehaviour {
 	//Where you can pick up powerups and go fast 
 	//Think of the SICK combos 
 
+	//TODO: 3/10
+	//Add a map or a hint text so the player knows what to do with the boxes
+	//Make the rug collider work correctly k ty
+	//click into the screen, tell players that 
+	//failstates are possible but thats ok right right? right?
+
 	public Text hintHelp;
 	public Transform player;
 	public GameObject jumpBox;
