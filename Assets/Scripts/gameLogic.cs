@@ -44,7 +44,7 @@ public class gameLogic : MonoBehaviour {
 
 			if(!hasBox && ((player.position - winZone.transform.position).magnitude > 2f)){
 
-			textBuffer = "Press [E] to pick up a light box";
+				textBuffer = "Press [E] to pick up a <b><color=#0099E8ff>Light Box</color></b>";
 
 			if(Input.GetKeyDown(KeyCode.E)){
 				hasBox = true;
@@ -69,7 +69,7 @@ public class gameLogic : MonoBehaviour {
 
 			if(!hasBox && ((player.position - winZone.transform.position).magnitude > 2f)){
 
-				textBuffer = "Press [E] to pick up an energetic box";
+				textBuffer = "Press [E] to pick up an <b><color=#E80C0Dff>Energetic Box</color></b>";
 
 				if(Input.GetKeyDown(KeyCode.E)){
 					hasBox = true;
@@ -92,7 +92,7 @@ public class gameLogic : MonoBehaviour {
 		//Make thsi show up tytyt
 		if(boxType == 2){
 			if(jumpTimer > 0){
-			textBuffer = "Press [SPACE] to jump while holding energetic box";
+				textBuffer = "Press [SPACE] to jump while holding <b><color=#E80C0Dff>Energetic Box</color></b>";
 			}
 			jumpTimer -= Time.deltaTime;
 		}
@@ -128,7 +128,7 @@ public class gameLogic : MonoBehaviour {
 			fastBox2.activeSelf){
 
 			if(displayTimer > 0){
-				textBuffer = "Placed Light Box in correct place";
+				textBuffer = "Placed <b><color=#0099E8ff>Light Box</color></b> in correct place";
 			};
 
 			fastBoxPlaced = true;
@@ -141,7 +141,7 @@ public class gameLogic : MonoBehaviour {
 			jumpBox.activeSelf){
 		
 			if(jDisplayTimer > 0){
-				textBuffer = "Placed Energetic Box in correct place";
+				textBuffer = "Placed <b><color=#E80C0Dff>Energetic Box</color></b> in correct place";
 			};
 
 			jumpBoxPlaced = true;

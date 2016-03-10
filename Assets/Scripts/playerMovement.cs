@@ -46,12 +46,12 @@ public class playerMovement : MonoBehaviour {
 		if(hasBox){
 
 			if(boxType == "fast"){
-				textBuffer += "Light box";
+				textBuffer += "<b><color=#0099E8ff>Light Box</color></b>";
 				speed = 15f;
 			}
 
 			if(boxType == "jump"){
-				textBuffer += "Energetic Box";
+				textBuffer += "<b><color=#E80C0Dff>Energetic Box</color></b>";
 				if(Input.GetKeyDown(KeyCode.Space)){
 					if(myCharController.isGrounded){
 						//Still working on jump
