@@ -9,11 +9,9 @@ public class gameLogic : MonoBehaviour {
 	//Where you can pick up powerups and go fast 
 	//Think of the SICK combos 
 
-	//TODO: 3/10
-	//Add a map or a hint text so the player knows what to do with the boxes
-	//Make the rug collider work correctly k ty
-	//click into the screen, tell players that 
-	//failstates are possible but thats ok right right? right?
+	//TODO: 3/13
+	//Add music
+	//Finish texture model of box
 
 	public Text hintHelp;
 	public Transform player;
@@ -130,7 +128,7 @@ public class gameLogic : MonoBehaviour {
 		}
 
 		//Winning code
-		if(((fastBox2.transform.position - winZone.transform.position).magnitude < 5f) &&
+		if(((fastBox2.transform.position - winZone.transform.position).magnitude < 10f) &&
 			fastBox2.activeSelf){
 
 			if(displayTimer > 0){
@@ -143,7 +141,7 @@ public class gameLogic : MonoBehaviour {
 
 		}
 
-		if(((jumpBox.transform.position - winZone.transform.position).magnitude < 5f) &&
+		if(((jumpBox.transform.position - winZone.transform.position).magnitude < 10f) &&
 			jumpBox.activeSelf){
 		
 			if(jDisplayTimer > 0){
@@ -156,7 +154,7 @@ public class gameLogic : MonoBehaviour {
 
 		}
 
-		if(((heavyBox.transform.position - winZone.transform.position).magnitude < 5f) &&
+		if(((heavyBox.transform.position - winZone.transform.position).magnitude < 10f) &&
 			heavyBox.activeSelf){
 
 			if(hDisplayTimer > 0){
