@@ -10,7 +10,7 @@ public class warpTruck : MonoBehaviour {
 
 	void OnTriggerEnter(Collider activator){
 		
-		hints.text = "Your dad offers to drive \n you back to the old house.\n Press [G] to go back to base";
+		hints.text = "Your dad offers to drive \n you back to the old house.\n Press [G] to go back to the old house";
 	}
 
 	void OnTriggerStay (Collider activator) {
